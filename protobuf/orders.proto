@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option go_package = "github.com/Nihal1203/common/orders";
+
+// OrderService handles order-related operations.
+service OrderService {
+  // CreateOrder creates a new order with given details.
+  rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse){}
+  
+}
+
+message Order {
+  int32 OrderID = 1;
+  int32 CustomerID = 2;
+  int32 ProductID = 3;
+  int32 Quantity = 4;
+}
+
+message CreateOrderRequest {
+  int32 customerID = 1;
+  int32 productID = 2;
+  int32 quantity = 3;
+}
+
+message CreateOrderResponse {
+  string status = 1;
+}
+
+message GetOrdersRequest {
+  int32 customerID = 1;
+}
+
+message GetOrderResponse {
+  repeated Order orders = 1;
+}
